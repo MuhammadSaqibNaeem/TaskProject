@@ -1,18 +1,18 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {DeletQuote} from '../Screens/util/Helpers';
-import {PLACEHOLDER_DATA, UPDATE_MODAL} from '../Screens/Sclice/crudSclice';
-import {Colors} from '../Assets/Theme/Colors';
+import {StyleSheet, Text, View, TouchableOpacity} from "react-native";
+import React from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {DeletCar} from "../Screens/util/Helpers";
+import {PLACEHOLDER_DATA, UPDATE_MODAL} from "../Screens/Sclice/crudSclice";
+import {Colors} from "../Assets/Theme/Colors";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+} from "react-native-responsive-screen";
 export default function List({item}) {
-  const placehoderData = useSelector(state => state.quotes.PlaceHolder);
+  const placehoderData = useSelector(state => state.Cars.PlaceHolder);
   let dispatch = useDispatch();
   let onPressRemove = () => {
-    DeletQuote(dispatch, item?.id);
+    DeletCar(dispatch, item?.id);
   };
   let onPressUpdate = () => {
     dispatch(PLACEHOLDER_DATA(item));
@@ -23,8 +23,8 @@ export default function List({item}) {
   return (
     <View
       style={{
-        width: wp('95%'),
-        alignSelf: 'center',
+        width: wp("95%"),
+        alignSelf: "center",
         backgroundColor: Colors.secondary,
         borderWidth: 2,
         borderColor: Colors.button,
@@ -35,8 +35,8 @@ export default function List({item}) {
       }}>
       <View
         style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
+          flexDirection: "row",
+          justifyContent: "space-between",
           marginBottom: 5,
         }}>
         <TouchableOpacity
@@ -50,25 +50,25 @@ export default function List({item}) {
           <Text style={styles.buttonText}>Remove</Text>
         </TouchableOpacity>
       </View>
-      <View style={{justifyContent: 'space-between', flexDirection: 'row'}}>
-        <Text style={{color: '#000', fontWeight: '900'}}>
+      <View style={{justifyContent: "space-between", flexDirection: "row"}}>
+        <Text style={{color: "#000", fontWeight: "900"}}>
           Car Model "{item.carModel}"
         </Text>
-        <Text style={{color: '#000', fontWeight: '900'}}>
+        <Text style={{color: "#000", fontWeight: "900"}}>
           Car Registration No "{item.carRegistration}"
         </Text>
       </View>
       <Text
-        style={{color: '#000', fontWeight: '900', alignSelf: 'center', top: 5}}>
+        style={{color: "#000", fontWeight: "900", alignSelf: "center", top: 5}}>
         Car Color "{item.carColor}"
       </Text>
       <View
         style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
+          flexDirection: "row",
+          justifyContent: "space-between",
           marginTop: 10,
         }}>
-        <Text style={{alignSelf: 'flex-end', color: Colors.button}}>
+        <Text style={{alignSelf: "flex-end", color: Colors.button}}>
           {item.date}
         </Text>
       </View>
@@ -79,15 +79,15 @@ export default function List({item}) {
 const styles = StyleSheet.create({
   buttonText: {
     color: Colors.secondary,
-    fontFamily: 'Radley-Regular',
+    fontFamily: "Radley-Regular",
     fontSize: 20,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   TouchableOpacityStyle: {
     backgroundColor: Colors.button,
-    width: wp('25%'),
-    height: hp('5%'),
+    width: wp("25%"),
+    height: hp("5%"),
     borderRadius: 10,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 });

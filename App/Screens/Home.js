@@ -6,24 +6,24 @@ import {
   View,
   Text,
   TextInput,
-} from 'react-native';
-import React, {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+} from "react-native";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 
-import List from '../Components/List';
+import List from "../Components/List";
 
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {Colors} from '../Assets/Theme/Colors';
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import {Colors} from "../Assets/Theme/Colors";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
-import {MODAL, UPDATE_MODAL} from '../Screens/Sclice/crudSclice';
-import AppModal from '../Components/AppModal';
-import UpdateQuoteModal from '../Components/AppModal';
-import Button from '../Components/atom/Button';
+} from "react-native-responsive-screen";
+import {MODAL, UPDATE_MODAL} from "../Screens/Sclice/crudSclice";
+import AppModal from "../Components/AppModal";
+import UpdateCarModal from "../Components/UpdateQuoteModal";
+import Button from "../Components/atom/Button";
 const Home = () => {
-  const data = useSelector(state => state.quotes.quotes);
+  const data = useSelector(state => state.Cars.Cars);
   let dispatch = useDispatch();
   let _renderList = ({item, _}) => <List item={item} />;
 
@@ -49,12 +49,12 @@ const Home = () => {
           keyExtractor={(_, i) => i.toString()}
         />
         <AppModal handleCloseModal={handleCloseModal} />
-        <UpdateQuoteModal handleCloseUpdateModal={handleCloseUpdateModal} />
+        <UpdateCarModal handleCloseUpdateModal={handleCloseUpdateModal} />
       </View>
       <View style={styles.PlusButtonView}>
         <Button
           onPress={handleShowModal}
-          text={'+'}
+          text={"+"}
           style={styles.PlusButton}
         />
       </View>
@@ -68,12 +68,12 @@ const styles = StyleSheet.create({
   btn: {
     width: 80,
     height: 40,
-    backgroundColor: 'tomato',
+    backgroundColor: "tomato",
     marginTop: 20,
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     borderRadius: 5,
     marginRight: 18,
-    justifyContent: 'center',
+    justifyContent: "center",
     marginBottom: 20,
   },
   container: {
@@ -81,35 +81,35 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   PlusButtonView: {
-    width: wp('20%'),
-    height: hp('10%'),
-    alignSelf: 'flex-end',
-    right: wp('2%'),
-    position: 'absolute',
-    bottom: hp('5%'),
-    right: wp('5%'),
-    alignSelf: 'flex-end',
+    width: wp("20%"),
+    height: hp("10%"),
+    alignSelf: "flex-end",
+    right: wp("2%"),
+    position: "absolute",
+    bottom: hp("5%"),
+    right: wp("5%"),
+    alignSelf: "flex-end",
   },
   PlusButton: {
-    width: hp('10%'),
-    height: hp('10%'),
+    width: hp("10%"),
+    height: hp("10%"),
     borderRadius: 100,
     backgroundColor: Colors.button,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   UserNameView: {
     // backgroundColor: Colors.secondary,
-    alignContent: 'center',
-    justifyContent: 'center',
-    top: hp('5%'),
+    alignContent: "center",
+    justifyContent: "center",
+    top: hp("5%"),
   },
   textStyle: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 35,
     color: Colors.secondary,
-    fontFamily: 'Langar-Regular',
+    fontFamily: "Langar-Regular",
   },
   flatlistView: {
-    top: hp('10%'),
+    top: hp("10%"),
   },
 });

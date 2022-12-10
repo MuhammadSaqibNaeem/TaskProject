@@ -1,54 +1,54 @@
-import {createAction, createReducer} from '@reduxjs/toolkit';
-import {useSelector} from 'react-redux';
-import uuid from 'react-native-uuid';
-const CREATE_NEW = createAction('add-new');
-const MODAL = createAction('modal');
-const UPDATE_MODAL = createAction('update-modal');
-const LOADING = createAction('load');
-const REMOVE_ONE = createAction('remove-one');
-const UPDATE_ONE = createAction('update-one');
-const PLACEHOLDER_DATA = createAction('placeholder-data');
+import {createAction, createReducer} from "@reduxjs/toolkit";
+import {useSelector} from "react-redux";
+import uuid from "react-native-uuid";
+const CREATE_NEW = createAction("add-new");
+const MODAL = createAction("modal");
+const UPDATE_MODAL = createAction("update-modal");
+const LOADING = createAction("load");
+const REMOVE_ONE = createAction("remove-one");
+const UPDATE_ONE = createAction("update-one");
+const PLACEHOLDER_DATA = createAction("placeholder-data");
 
 var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var dd = String(today.getDate()).padStart(2, "0");
+var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
 var yyyy = today.getFullYear();
 
-let date = mm + '/' + dd + '/' + yyyy;
+let date = mm + "/" + dd + "/" + yyyy;
 
 const initialState = {
   modalOpen: false,
   PlaceHolder: null,
   updateModalOpen: false,
   loading: false,
-  quotes: [
+  Cars: [
     {
       id: 1,
-      carModel: 'Honda Civic',
+      carModel: "Honda Civic",
       date: `${date}`,
-      carRegistration: 'JH49kkl',
-      carColor: 'red',
+      carRegistration: "JH49kkl",
+      carColor: "red",
     },
     {
       id: 2,
-      carModel: 'Ferrari',
+      carModel: "Ferrari",
       date: `${date}`,
-      carRegistration: '49kerkkl',
-      carColor: 'yellow',
+      carRegistration: "49kerkkl",
+      carColor: "yellow",
     },
     {
       id: 3,
-      carModel: 'Tesla',
+      carModel: "Tesla",
       date: `${date}`,
-      carRegistration: '49MSN123',
-      carColor: 'Green',
+      carRegistration: "49MSN123",
+      carColor: "Green",
     },
   ],
 };
 // Create new
-const Quote = createReducer(initialState, builder => {
+const Car = createReducer(initialState, builder => {
   builder.addCase(CREATE_NEW, (state, action) => {
-    let prev = JSON.parse(JSON.stringify(state.quotes));
+    let prev = JSON.parse(JSON.stringify(state.Cars));
     prev.unshift({
       ...action.payload,
       id: uuid.v4(),
@@ -56,31 +56,31 @@ const Quote = createReducer(initialState, builder => {
     });
     return {
       ...state,
-      quotes: prev,
+      Cars: prev,
     };
   });
 
   // Update one
 
   builder.addCase(UPDATE_ONE, (state, action) => {
-    let prev = JSON.parse(JSON.stringify(state.quotes));
+    let prev = JSON.parse(JSON.stringify(state.Cars));
     const index = prev.findIndex(obj => obj.id === action.payload.id);
     if (index !== -1) prev[index] = action?.payload;
     return {
       ...state,
-      quotes: prev,
+      Cars: prev,
     };
   });
 
   // Delete one
 
   builder.addCase(REMOVE_ONE, (state, action) => {
-    let prev = JSON.parse(JSON.stringify(state.quotes));
+    let prev = JSON.parse(JSON.stringify(state.Cars));
     const index = prev.findIndex(obj => obj.id === action?.payload);
     if (index !== -1) prev.splice(index, 1);
     return {
       ...state,
-      quotes: prev,
+      Cars: prev,
     };
   });
 
@@ -116,7 +116,7 @@ const Quote = createReducer(initialState, builder => {
   });
 });
 
-export default Quote;
+export default Car;
 
 export {
   CREATE_NEW,

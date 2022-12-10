@@ -1,8 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit';
-import quotes from './App/Screens/Sclice/crudSclice';
+import Cars from './App/Screens/Sclice/crudSclice';
 
 let reducer = {
-  quotes,
+  Cars,
 };
 
 const store = configureStore({

@@ -5,16 +5,16 @@ import {
   REMOVE_ONE,
   UPDATE_MODAL,
   UPDATE_ONE,
-} from '../Sclice/crudSclice';
+} from "../Sclice/crudSclice";
 
 var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var dd = String(today.getDate()).padStart(2, "0");
+var mm = String(today.getMonth() + 1).padStart(2, "0");
 var yyyy = today.getFullYear();
 
-let date = mm + '/' + dd + '/' + yyyy;
+let date = mm + "/" + dd + "/" + yyyy;
 
-const CreateQuote = (dispatch, data) => {
+const CreateCar = (dispatch, data) => {
   dispatch(LOADING(true));
   dispatch(CREATE_NEW(data));
   setTimeout(() => {
@@ -22,7 +22,7 @@ const CreateQuote = (dispatch, data) => {
     dispatch(MODAL(false));
   }, 1000);
 };
-const UpdateQuote = (dispatch, data1) => {
+const UpdateCar = (dispatch, data1) => {
   const data = {...data1, date: date};
   dispatch(LOADING(true));
   dispatch(UPDATE_ONE(data));
@@ -31,8 +31,8 @@ const UpdateQuote = (dispatch, data1) => {
     dispatch(UPDATE_MODAL(false));
   }, 1000);
 };
-const DeletQuote = (dispatch, id) => {
+const DeletCar = (dispatch, id) => {
   dispatch(REMOVE_ONE(id));
 };
 
-export {CreateQuote, UpdateQuote, DeletQuote};
+export {CreateCar, UpdateCar, DeletCar};

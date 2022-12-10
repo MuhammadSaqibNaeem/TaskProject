@@ -7,38 +7,38 @@ import {
   Text,
   TextInput,
   ActivityIndicator,
-} from 'react-native';
+} from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
-import {Picker} from '@react-native-picker/picker';
-import React, {useState} from 'react';
-import Button from './atom/Button';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {CreateQuote} from '../Screens/util/Helpers';
-import {useDispatch, useSelector} from 'react-redux';
-import uuid from 'react-native-uuid';
-import {MODAL} from '../Screens/Sclice/crudSclice';
-import TextInputCom from './TextInputCom';
-import {Colors} from '../Assets/Theme/Colors';
+} from "react-native-responsive-screen";
+import {Picker} from "@react-native-picker/picker";
+import React, {useState} from "react";
+import Button from "./atom/Button";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import {CreateCar} from "../Screens/util/Helpers";
+import {useDispatch, useSelector} from "react-redux";
+import uuid from "react-native-uuid";
+import {MODAL} from "../Screens/Sclice/crudSclice";
+import TextInputCom from "./TextInputCom";
+import {Colors} from "../Assets/Theme/Colors";
 
 const AppModal = ({handleCloseModal}) => {
-  const showModal = useSelector(state => state.quotes.modalOpen);
-  const loading = useSelector(state => state.quotes.loading);
+  const showModal = useSelector(state => state.Cars.modalOpen);
+  const loading = useSelector(state => state.Cars.loading);
   const [carModel, setCarModel] = useState();
   const [carRegistration, CarRegistration] = useState();
   const [carColor, setColor] = useState();
 
   const dispatch = useDispatch();
-  handleAddQuote = () => {
+  handleCar = () => {
     let data = {
       carModel,
       carRegistration,
       carColor,
     };
     if (carModel && carRegistration && carColor) {
-      CreateQuote(dispatch, data);
+      CreateCar(dispatch, data);
     }
   };
   return (
@@ -47,7 +47,7 @@ const AppModal = ({handleCloseModal}) => {
         onPress={() => dispatch(MODAL(false))}
         style={{
           ...StyleSheet.absoluteFill,
-          backgroundColor: 'rgba(0,0,0,0.5)',
+          backgroundColor: "rgba(0,0,0,0.5)",
         }}
       />
 
@@ -55,20 +55,20 @@ const AppModal = ({handleCloseModal}) => {
         <KeyboardAwareScrollView>
           <View
             style={{
-              width: '90%',
-              alignSelf: 'center',
-              marginTop: '10%',
+              width: "90%",
+              alignSelf: "center",
+              marginTop: "10%",
             }}>
             <View
               style={{
-                width: '100%',
+                width: "100%",
               }}>
-              <Text style={{color: 'black', fontSize: 20, marginBottom: 10}}>
+              <Text style={{color: "black", fontSize: 20, marginBottom: 10}}>
                 Car Model
               </Text>
               <View
                 style={{
-                  width: '100%',
+                  width: "100%",
                   borderWidth: 2,
                   borderRadius: 10,
                   borderColor: Colors.button,
@@ -76,28 +76,28 @@ const AppModal = ({handleCloseModal}) => {
                 <TextInput
                   onChangeText={setCarModel}
                   placeholderTextColor={Colors.black}
-                  placeholder={'Please Enter Your Car Model'}
-                  style={{padding: 5, height: 50, color: 'black'}}
+                  placeholder={"Please Enter Your Car Model"}
+                  style={{padding: 5, height: 50, color: "black"}}
                 />
               </View>
             </View>
           </View>
           <View
             style={{
-              width: '90%',
-              alignSelf: 'center',
-              marginTop: '10%',
+              width: "90%",
+              alignSelf: "center",
+              marginTop: "10%",
             }}>
             <View
               style={{
-                width: '100%',
+                width: "100%",
               }}>
-              <Text style={{color: 'black', fontSize: 20, marginBottom: 10}}>
+              <Text style={{color: "black", fontSize: 20, marginBottom: 10}}>
                 Car Registration No
               </Text>
               <View
                 style={{
-                  width: '100%',
+                  width: "100%",
                   borderWidth: 2,
                   borderRadius: 10,
                   borderColor: Colors.button,
@@ -105,29 +105,29 @@ const AppModal = ({handleCloseModal}) => {
                 <TextInput
                   onChangeText={CarRegistration}
                   placeholderTextColor={Colors.black}
-                  placeholder={'Please Enter Your Car Registration No'}
-                  style={{padding: 5, height: 50, color: 'black'}}
+                  placeholder={"Please Enter Your Car Registration No"}
+                  style={{padding: 5, height: 50, color: "black"}}
                 />
               </View>
             </View>
           </View>
           <View
             style={{
-              width: '90%',
-              alignSelf: 'center',
+              width: "90%",
+              alignSelf: "center",
               marginTop: 10,
             }}>
             <View
               style={{
-                width: '100%',
+                width: "100%",
               }}>
-              <Text style={{color: 'black', fontSize: 20, marginBottom: 10}}>
+              <Text style={{color: "black", fontSize: 20, marginBottom: 10}}>
                 Color
               </Text>
             </View>
             <View
               style={{
-                width: '100%',
+                width: "100%",
                 borderWidth: 2,
                 borderRadius: 10,
                 borderColor: Colors.button,
@@ -139,19 +139,22 @@ const AppModal = ({handleCloseModal}) => {
                 <Picker.Item label="Red" value="Red" />
                 <Picker.Item label="Green" value="Green" />
                 <Picker.Item label="Yellow" value="Yellow" />
+                <Picker.Item label="Blue" value="Blue" />
+                <Picker.Item label="Black" value="Black" />
+                <Picker.Item label="White" value="White" />
               </Picker>
             </View>
           </View>
           {!loading ? (
             <Button
-              onPress={handleAddQuote}
-              text={'Save'}
+              onPress={handleCar}
+              text={"Save"}
               textStyle={styles.btnText}
               style={styles.btn}
             />
           ) : (
             <ActivityIndicator
-              style={{alignSelf: 'flex-end', marginRight: 20, marginTop: 20}}
+              style={{alignSelf: "flex-end", marginRight: 20, marginTop: 20}}
               size={30}
               color={Colors.button}
             />
@@ -170,26 +173,26 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: Colors.button,
     marginTop: 20,
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     borderRadius: 5,
     marginRight: 18,
-    justifyContent: 'center',
+    justifyContent: "center",
     marginBottom: 20,
   },
   btnText: {
-    color: '#fff',
-    textAlign: 'center',
-    fontWeight: 'bold',
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "bold",
     fontSize: 20,
   },
   modalCard: {
-    width: '90%',
-    height: '60%',
+    width: "90%",
+    height: "60%",
     zIndex: 100,
-    backgroundColor: 'white',
-    alignSelf: 'center',
-    marginTop: '30%',
-    justifyContent: 'center',
+    backgroundColor: "white",
+    alignSelf: "center",
+    marginTop: "30%",
+    justifyContent: "center",
     borderRadius: 10,
   },
 });
