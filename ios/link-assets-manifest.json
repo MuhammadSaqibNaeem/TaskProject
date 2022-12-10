@@ -1,0 +1,25 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "App/Assets/Fonts/ConcertOne-Regular.ttf",
+      "sha1": "775f234b4c3dae77b69058e31944fa9fbdc818d2"
+    },
+    {
+      "path": "App/Assets/Fonts/Langar-Regular.ttf",
+      "sha1": "0ee73c9e83d52279fd8139c64ec72953d6285517"
+    },
+    {
+      "path": "App/Assets/Fonts/Radley-Regular.ttf",
+      "sha1": "b73639acaff552ad34b3d3be936a57584be0ff56"
+    },
+    {
+      "path": "App/Assets/Fonts/Slabo13px-Regular.ttf",
+      "sha1": "335bc57d31d4f9dd69c304e7ac480642daa2053e"
+    },
+    {
+      "path": "App/Assets/Fonts/TradeWinds-Regular.ttf",
+      "sha1": "a0eb8d91b3c483b3b8dd8b408a62e0378ab96f53"
+    }
+  ]
+}
